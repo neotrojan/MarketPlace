@@ -2,18 +2,31 @@
 <html>
   <head>
     <title>MarketPlace</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
+    
+    <!-- Inserire le icone -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <%= stylesheet_link_tag    'default', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'default', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
 
-  	<%= link_to "Home", root_path %>
-	  <%= link_to "About", about_path %>
+    <!-- Pariale alla barra degli indirizzi -->
+    <%= render "layouts/header" %>
 
+    <main>
+      <%= yield %>
+    </main>
 
-    <%= yield %>
+    <!-- Pariale al footer --> 
+    <%= render "layouts/footer" %>
+
   </body>
+    
+    <!--Script utile per far funzionare la barra di navigazione -->
+    <script>
+      $(".button-collapse").sideNav();
+    </script>
+
 </html>
