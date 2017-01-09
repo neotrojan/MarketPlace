@@ -1,5 +1,7 @@
+/* Per materialize */
 @import "materialize";
 
+/* Rendere il footer fisso */
 body {
     display: flex;
     min-height: 100vh;
@@ -9,3 +11,8 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+/* Creazione classe per i bottoni */
+.btn-devise {
+	width:100%;
+}

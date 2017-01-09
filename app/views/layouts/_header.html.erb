@@ -1,27 +1,27 @@
 <!--Rendere la barra di navigazione fissa-->
-  <header class="navbar-fixed">  
+<header class="navbar-fixed">  
 
-    <!--Barra di Navigazione, e diamo il colore -->
-    <nav class="blue-grey darken-2">
+  <!--Barra di Navigazione, e diamo il colore -->
+  <nav class="blue-grey darken-2">
+    
+    <!-- Inserendo container implementiamo uno spazio laterale -->
+    <div class="container nav-wrapper">
       
-      <!-- Inserendo container implementiamo uno spazio laterale -->
-      <div class="container nav-wrapper">
-        
-        <!-- Inserire la nostra home come logo -->
-        <%= link_to "MarketPlace", root_path, class:"brand-logo"  %>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-        
-        <!-- Inserire la pagina about nella barra di navigazione per dektop -->
-        <ul class="right hide-on-med-and-down">
-          <%= link_to "About", about_path %>
-        </ul>
-        
-        <!-- Inserire la pagina about nella barra di navigazione per Mobile -->
-        <ul class="side-nav" id="mobile-demo">
-          <%= link_to "About", about_path %>
-        </ul>
+      <!-- Inserire la nostra home come logo -->
+      <%= link_to "MarketPlace", root_path, class:"brand-logo"  %>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      
+      <!-- Inserire la pagina about nella barra di navigazione per dektop -->
+      <ul class="right hide-on-med-and-down">
+        <%= link_to "About", about_path %>
+      </ul>
+      
+      <!-- Inserire la pagina about nella barra di navigazione per Mobile -->
+      <ul class="side-nav" id="mobile-demo">
+        <%= link_to "About", about_path %>
+      </ul>
 
-      </div>
+    </div>
 
-    </nav>
-
+  </nav>
+</header>
