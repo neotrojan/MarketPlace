@@ -24,8 +24,8 @@ gem 'coffee-script-source', '1.8.0'
 # GEM per device 
 gem 'devise'
 
-
-
+#Gemma per far funzionare la registrazione su Windows
+gem 'bcrypt', platforms: :ruby
 
 
 group :development, :test do

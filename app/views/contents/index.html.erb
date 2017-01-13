@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contents</h1>
+
+<table>
+  <!-- Colonne -->
+  <thead>
+    <tr>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+      <th>Prezzo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <!-- Contenuto -->
+  <tbody>
+    <!-- Di tutti gli elementi, visualizzami... -->
+    <% @contents.each do |content| %>
+      <tr>
+        <td><%= content.titolo %></td>
+        <td><%= content.descrizione %></td>
+        <td><%= content.price %></td>
+        
+        <!-- mostra il prodotto -->
+        <td><%= link_to 'Show', content %></td>
+        <!-- modifica il contenuto dell'id caricato -->
+        <td><%= link_to 'Edit', edit_content_path(content) %></td>
+        <!-- cancella il prodotto selezionato e chiedi conferma -->
+        <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Sei sicuro di cancellare?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Content', new_content_path %>

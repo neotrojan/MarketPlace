@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
+  
+  #Gestione dei contenuti generato da scaffold
+  resources :contents
+
+  #Gestione degli utenti gestito da devise
   devise_for :users
+  
   root 'pages#home'
 
   get 'about' => 'pages#about'

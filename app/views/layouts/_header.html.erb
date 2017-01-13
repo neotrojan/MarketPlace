@@ -1,5 +1,5 @@
 <!--Rendere la barra di navigazione fissa-->
-<header class="navbar-fixed">  
+<header class="navbar-fixed">
 
   <!--Barra di Navigazione, e diamo il colore -->
   <nav class="blue-grey darken-2">
@@ -10,15 +10,37 @@
       <!-- Inserire la nostra home come logo -->
       <%= link_to "MarketPlace", root_path, class:"brand-logo"  %>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+  
       
-      <!-- Inserire la pagina about nella barra di navigazione per dektop -->
+      <!-- --------------- Tab nella barra di navigazione per dektop -->
       <ul class="right hide-on-med-and-down">
-        <%= link_to "About", about_path %>
+        <!-- Se l'utente è loggato mostra solo il tab sotto, altrimenti altri -->
+        <% if user_signed_in? %>
+          <!-- Tab per fare il logout usando il metodo di cancellare la sessione--> 
+          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <!-- Tab per fare il LogIn --> 
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <!-- Tab per fare la registrazione --> 
+          <li><%= link_to "Registrazione", new_user_registration_path %></li>
+        <% end %>
+        
+
       </ul>
       
-      <!-- Inserire la pagina about nella barra di navigazione per Mobile -->
+      <!-- ---------------- barra di navigazione per Mobile -->
       <ul class="side-nav" id="mobile-demo">
-        <%= link_to "About", about_path %>
+        <!-- Se l'utente è loggato mostra solo il tab sotto, altrimenti altri -->
+        <% if user_signed_in? %>
+          <!-- Tab per fare il logout usando il metodo di cancellare la sessione--> 
+          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <!-- Tab per fare il Log In --> 
+          <li><%= link_to "Log In", new_user_session_path %></li>
+          <!-- Tab per fare la registrazione --> 
+          <li><%= link_to "Registrazione", new_user_registration_path %></li>
+        <% end %>
+
       </ul>
 
     </div>
