@@ -3,6 +3,14 @@ class ContentsController < ApplicationController
   #Prima di avviare show, edit... fai set_content
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
+  #Per devise -  prima di fare tutto, controlla se l'utente è autenticato o meno
+  #Ma non serve per index e show
+  before_action :authenticate_user!, except: [:index, :show]
+
+  #Per devise -  prima di fare tutto, controlla se l'utente è il creatore del prodotto
+  #Non far modificare prodotti di altri utenti
+  before_action :check_user, only: [:edit, :update, :destroy]
+
   # La pagina di view di riferimento è views/contents/index.html.erb
   def index
     #Prendere tutti gli elementi del db
@@ -15,17 +23,18 @@ class ContentsController < ApplicationController
 
   # La pagina di view di riferimento è views/contents/new.html.erb
   def new
-    @content = Content.new
+    #Associare al contenuto l'utente loggato
+    @content = current_user.contents.build
   end
 
-  # GET /contents/1/edit
+
   def edit
   end
 
-  # POST /contents
-  # POST /contents.json
+
   def create
-    @content = Content.new(content_params)
+    #Associare al contenuto l'utente loggato
+    @content = current_user.contents.build(content_params)
 
     respond_to do |format|
       if @content.save
@@ -36,8 +45,7 @@ class ContentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /contents/1
-  # PATCH/PUT /contents/1.json
+
   def update
     respond_to do |format|
       if @content.update(content_params)
@@ -48,8 +56,7 @@ class ContentsController < ApplicationController
     end
   end
 
-  # DELETE /contents/1
-  # DELETE /contents/1.json
+
   def destroy
     @content.destroy
     respond_to do |format|
@@ -63,8 +70,16 @@ class ContentsController < ApplicationController
       @content = Content.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+
     def content_params
       params.require(:content).permit(:titolo, :descrizione, :price)
+    end
+
+    #Serve per le autorizzazioni a moficare o cancellare un contenuto
+    #Se l'utente è diverso dall'utente loggato, rimandalo all'home e fai compareire un errore
+    def check_user
+      if current_user != @content.user
+        redirect_to root_url, alert:"Scusa ma non hai accesso a quesa pagina" 
+      end
     end
 end
