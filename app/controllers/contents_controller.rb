@@ -70,9 +70,9 @@ class ContentsController < ApplicationController
       @content = Content.find(params[:id])
     end
 
-
+    #Parametri accettati, aggiungiamo cover e allegato
     def content_params
-      params.require(:content).permit(:titolo, :descrizione, :price)
+      params.require(:content).permit(:titolo, :descrizione, :price, :cover, :allegato)
     end
 
     #Serve per le autorizzazioni a moficare o cancellare un contenuto

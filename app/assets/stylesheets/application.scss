@@ -16,3 +16,35 @@ body {
 .btn-devise {
 	width:100%;
 }
+
+
+/* ----------------------------Pagina show */
+/* Creare dello spazio tra la cover e il testo */
+.show-img {
+	padding-right: 5%;
+}
+
+/* Creazione classe per show.html.erb - all'ineare il tiotolo all foto */
+.show-titolo {
+	margin-top: 0;
+	/* diminuire la grandezza del tiolo, ed è responsive per i cellulari */
+	font-size: 3.4em;
+}
+
+
+/* diminuire la grandezza del prezzo, ed è responsive per i cellulari */
+.show-prezzo{
+	font-size: 2em;
+}
+
+/* diminuire la grandezza di h1 */
+h1 {
+  font-size: 3em;
+}
+
+/* ---------------------------------Pagina new */
+/* Creazione classe per i bottoni */
+.btn-form {
+  width:100%;
+}
+

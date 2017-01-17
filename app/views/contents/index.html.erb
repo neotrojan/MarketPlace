@@ -1,46 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Contents</h1>
+<!-- <h1>Contents</h1> -->
 
-<table>
-  <!-- Colonne -->
-  <thead>
-    <tr>
-      <th>Titolo</th>
-      <th>Descrizione</th>
-      <th>Utente</th>
-      <th>Prezzo</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!-- row serve per creare una griglia -->
+<div class="row">
+  <!-- Di tutti gli elementi, visualizzami... -->
+  <% @contents.each do |content| %>
+  <!-- Lo spazio sarà suddiviso per 3, quindi 4 carte -->
+    <div class="col s3">
+      <div class="card">
+          
+          <!-- Immagine che verrà presa dal db-->
+          <div class="card-image waves-effect waves-block waves-light">
+            <%= image_tag content.cover.url, class: "activator" %>
+          </div>
+          
+          <!-- Titolo che verrà preso dal db, e il tasto che espande le info -->
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4"><%= content.titolo %><i class="material-icons right">more_vert</i></span>
 
-  <!-- Contenuto -->
-  <tbody>
-    <!-- Di tutti gli elementi, visualizzami... -->
-    <% @contents.each do |content| %>
-      <tr>
-        <td><%= content.titolo %></td>
-        <td><%= content.descrizione %></td>
-        <!--Mostrami il nome dell'utente -->
-        <td><%= content.user.name %></td>
-        <td><%= content.price %></td>
-        
-        <!-- mostra il prodotto -->
-        <td><%= link_to 'Mostra', content %></td>
-        
-        <!-- Mostra edit e destroy solo se il contenuto creato è stato creato dall'utente loggato -->
-        <% if content.user == current_user %> 
-          <!-- modifica il contenuto dell'id caricato -->
-          <td><%= link_to 'Edit', edit_content_path(content) %></td>
-          <!-- cancella il prodotto selezionato e chiedi conferma -->
-          <td><%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Sei sicuro di cancellare?' } %></td>
-        <% end %>
+            <!-- Username e prezzo sulla steassa riga-->
+            <div>
+              <!-- Username di default a sinistra -->
+              <span>Venduto da <%= content.user.name %></span>
+              <!-- prezzo spostato a destra, in formato prezzo-->
+              <span class="right"><%= number_to_currency(content.price) %></span>
+            </div>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <br>
+
+            <!-- Tasto mostra, al centro -->
+            <div class="center"><%= link_to 'Scopri di più', content, class: "btn" %></div>
+             <!-- Mostra edit e destroy solo se il contenuto creato è stato creato dall'utente loggato -->
+            <% if content.user == current_user %>
+              <br>
+              <div class="center">
+                <p><%= link_to 'Edit', edit_content_path(content) %>
+                <%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Sei sicuro di cancellare?' } %></p>
+              </div>
+            <% end %>
+
+          </div>
+          <!-- tasto che si espande, dopo riporta di nuovo il titolo e descrizione -->
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><%= content.titolo %><i class="material-icons right">close</i></span>
+            <p><%= content.descrizione %></p>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Content', new_content_path %>
+

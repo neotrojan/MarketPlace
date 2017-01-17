@@ -10,8 +10,12 @@
             	<%= link_to "MarketPlace", root_path, class:"brand-logo"  %>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 
-                <!-- --------------- Tab nella barra di navigazione per dektop -->
+        
+
+          <!-- --------------- Tab nella barra di navigazione per dektop -->
 			    <ul class="right hide-on-med-and-down">
+              <!-- inserire un nuovo contenuto -->
+             <li><%= link_to 'Vendi contenuto', new_content_path %></li>
 			       <!-- Se l'utente è loggato mostra solo il tab sotto, altrimenti altri -->
 			       <% if user_signed_in? %>
 			          <!-- Tab per fare il logout usando il metodo di cancellare la sessione--> 
@@ -30,6 +34,9 @@
 
     <!-- ---------------- barra di navigazione per Mobile -->
       <ul class="side-nav" id="mobile-demo">
+        <!-- inserire un nuovo contenuto -->
+        <li><%= link_to 'Vendi contenuto', new_content_path %></li>
+
         <!-- Se l'utente è loggato mostra solo il tab sotto, altrimenti altri -->
         <% if user_signed_in? %>
           <!-- Tab per fare il logout usando il metodo di cancellare la sessione--> 

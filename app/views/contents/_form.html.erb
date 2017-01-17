@@ -1,5 +1,6 @@
 <!-- Parziale da utilizzare per new e edit, hanno le stesse informazioni -->
-<%= form_for(@content) do |f| %>
+<!-- Far inserire la cover --> 
+<%= form_for @content, html: { multipart: true } do |f| %>
   <% if @content.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@content.errors.count, "error") %> prohibited this content from being saved:</h2>
@@ -12,22 +13,41 @@
     </div>
   <% end %>
 
+  <!-- Inserimento dell'allegato, colore e label cosi da un iformare tutte le scritte-->
   <div class="field">
-    <%= f.label :titolo %>
+    <label class="grey-text">Carica il contenuto digitale che vuoi vendere (formati supportati: PowerPoint, Exel, word, PDF, immagini e mp3)</label>
+    <br>
+    <%= f.file_field :allegato %>
+  </div>
+  <br>
+
+  <div class="field">
+    <%= f.label :titolo %><br>
     <%= f.text_field :titolo %>
   </div>
 
   <div class="field">
-    <%= f.label :descrizione %>
-    <%= f.text_area :descrizione %>
+    <%= f.label :descrizione %><br>
+    <%= f.text_area :descrizione, class: "materialize-textarea" %>
   </div>
 
   <div class="field">
-    <%= f.label :price %>
+    <%= f.label :Prezzo %><br>
     <%= f.text_field :price %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <!-- Inserimento della cover -->
+  <div class="field">
+     <label class="grey-text">Carica un'immagine da utilizzare come cover per il tuo contenuto</label>
+     <br>
+    <%= f.file_field :cover %>
   </div>
+
+
+  <br>
+  <!-- Tasto per salvare il contenuto, usando una classe btn e una classe personalizzata -->
+  <div class="actions">
+    <%= f.submit 'Salva Contenuto', class: "btn btn-form" %>
+  </div>
+  <br>
 <% end %>
