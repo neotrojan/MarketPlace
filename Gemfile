@@ -27,8 +27,27 @@ gem 'devise'
 #Gemma per far funzionare la registrazione su Windows
 gem 'bcrypt', platforms: :ruby
 
+
 #Gemma per far funzionare paperclip
 gem "paperclip", "~> 5.0.0"
+
+# Gemme peer l'impaginazione
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-materialize'
+
+#Gemma per migliorare l'idicizzazione di un contenuto
+gem 'friendly_id', '~> 5.1.0'
+
+#Rendere sicuro il codice
+gem 'dotenv-rails', :groups => [:development, :test]
+
+#Gem per i pagamenti
+gem 'stripe'
+
+#Gem per la sicurezza dei pagamenti
+gem 'aasm'
+
+
 
 
 group :development, :test do

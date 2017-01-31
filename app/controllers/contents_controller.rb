@@ -13,8 +13,10 @@ class ContentsController < ApplicationController
 
   # La pagina di view di riferimento è views/contents/index.html.erb
   def index
-    #Prendere tutti gli elementi del db
-    @contents = Content.all
+    #Prendere tutti gli elementi del db e visulizzabili in ordine dal più vecchio, 
+    #mentre aggiungendo .order("created_at DESC") di ordina al contrario
+    #Aggiungendo .paginate(:page => params[:page], :per_page => 30) si avrà ogni pagina di al massimo 12 contenuti
+    @contents = Content.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 12)
   end
 
   # La pagina di view di riferimento è views/contents/show.html.erb
@@ -65,9 +67,9 @@ class ContentsController < ApplicationController
   end
 
   private
-    #Precaricare id del prodotto
+    #Precaricare id del prodotto, aggiungendo friendly, verrà riercato per titolo
     def set_content
-      @content = Content.find(params[:id])
+      @content = Content.friendly.find(params[:id])
     end
 
     #Parametri accettati, aggiungiamo cover e allegato

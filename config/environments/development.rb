@@ -55,4 +55,7 @@ Rails.application.configure do
 
   #Configuriamo il mailer in locale (server per installazione di device)
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  #Per far funzionare paperclip su windows
+  Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
 end

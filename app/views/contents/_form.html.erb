@@ -31,8 +31,10 @@
     <%= f.text_area :descrizione, class: "materialize-textarea" %>
   </div>
 
+  
   <div class="field">
-    <%= f.label :Prezzo %><br>
+    <!-- Inserito il minimo di 50 centesimi per far funzionare stripe -->
+    <%= f.label :Prezzo_min_50_cent%><br>
     <%= f.text_field :price %>
   </div>
 

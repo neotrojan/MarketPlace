@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     #Indicare la creazine della colonna name a devise
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    #Indicare che l'untente può modificare la sua mail anche successivamente
+    #Indicare che l'utente può modificare la sua mail anche successivamente
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
