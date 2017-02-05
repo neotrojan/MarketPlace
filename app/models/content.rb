@@ -33,8 +33,8 @@ class Content < ActiveRecord::Base
   	#Validazione per l'inserimento di un nuovo contenuto
   	validates :titolo, :descrizione, :price, presence: true
 
-  	#Validazione per l'inserimento di un prezzo mai negativo, ma per far funzionare stripe, il pagamento deve essere da 49 centesimi in su
-  	validates :price, numericality: { greater_than: 49 }
+  	#Validazione per l'inserimento di un prezzo mai negativo, ma per far funzionare stripe, il pagamento deve essere da 0.49 centesimi in su
+  	validates :price, numericality: { greater_than: 0.49 }
 
 
   	#Validazione per l'inserimento di una cover e allegato

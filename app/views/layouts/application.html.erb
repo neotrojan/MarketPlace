@@ -16,8 +16,21 @@
     <%= render "layouts/header2" %>
 
     <!-- Per far funzionare devise, comparsa di alert -->
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <!-- <p class="notice"><%= notice %></p> -->
+    <!-- <p class="alert"><%= alert %></p> -->
+
+    <!-- Gestione dei TOAST -->
+    <div class="container">
+      <!-- Per ogni messaggio flash che provengono dal controller inserisce un typ e un message -->
+      <% flash.each do |type, message| %>
+        <!-- usare materialize toast dove prende il message e rimane aperto per 4000-->
+        <script>
+          Materialize.toast('<%= message %>', 4000)
+        </script>
+      <% end %>
+    </div>
+
+
 
     <!-- tutte le pagine avranno gli spazi laterali-->
     <main class="container">
