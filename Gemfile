@@ -32,6 +32,8 @@ gem 'bcrypt', platforms: :ruby
 
 #Gemma per far funzionare paperclip
 gem "paperclip", "~> 5.0.0"
+#Gemma per far funzionare paperclip su heroku
+gem 'aws-sdk', '~> 2.3'
 
 # Gemme peer l'impaginazione
 gem 'will_paginate', '~> 3.1.0'
