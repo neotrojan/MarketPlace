@@ -77,6 +77,8 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.17-x86-mingw32)
+    font-awesome-sass (4.7.0)
+      sass (>= 3.2)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     globalid (0.3.7)
@@ -215,6 +217,7 @@ DEPENDENCIES
   coffee-script-source (= 1.8.0)
   devise
   dotenv-rails
+  font-awesome-sass
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.5)
   jquery-rails

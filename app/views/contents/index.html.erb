@@ -7,7 +7,8 @@
   <!-- Di tutti gli elementi, visualizzami... -->
   <% @contents.each do |content| %>
   <!-- Lo spazio sarà suddiviso per 3, quindi 4 carte -->
-    <div class="col s3">
+  <!-- Per rendere responsive il sito, 1 contents per mobile, 2 elementi su tablet e 3 elementi se siamo su desktop -->
+    <div class="col s12 m6 l4">
       <div class="card">
           
           <!-- Immagine che verrà presa dal db-->

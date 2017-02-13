@@ -9,6 +9,14 @@
     <!-- Inserire le icone -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <!-- font per tutto il progetto --> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
+
+    <!-- Rendere l'interno sito response per il mobile --> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+
   </head>
   <body>
 
@@ -29,6 +37,9 @@
         </script>
       <% end %>
     </div>
+
+    <!-- Parziale rer poter eliminare il container solo in home -->
+    <%= render 'pages/slider' if action_name == 'home' %>
 
 
 

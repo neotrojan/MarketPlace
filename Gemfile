@@ -51,6 +51,9 @@ gem 'stripe'
 #Gem per la sicurezza dei pagamenti
 gem 'aasm'
 
+#Gem per far funzionare l'icona di font awesome di fb del social
+gem 'font-awesome-sass'
+
 
 
 group :development, :test do
