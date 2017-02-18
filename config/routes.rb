@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   #Pagina per scaricare il contenuto acquistato
   get '/pickup/:guid', to: 'transactions#pickup', as: :pickup
 
+  #Pagina di gestione della dashboard
+  get 'dashboard' => 'pages#dashboard'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

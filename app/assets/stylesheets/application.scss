@@ -53,6 +53,10 @@ h2 {
   font-size: 2em;
 }
 
+h4 {
+  font-size: 1.2em;
+}
+
 
 
 /* ---------------------------------Pagina new */
@@ -85,6 +89,17 @@ h2 {
   .fa-social{
   padding: 0 10%;
   }
+}
+
+/* Usato per creare spazio tra l'header e l'immagine in show */
+.content-show{
+  margin-top: 5%;
+}
+
+/* Usato per aver più spazio nel menu a comparsa nell'header */
+.dropdown-content{
+  min-width: 150px;
+
 }
 
 

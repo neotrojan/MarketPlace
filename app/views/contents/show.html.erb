@@ -1,3 +1,6 @@
+<!-- mettre uno spazioni tra l'header e l'immagine -->
+<div class="content-show">
+
 <!-- <p id="notice"><%= notice %></p> -->
 
 <!-- suddividere la pagina -->
@@ -34,13 +37,16 @@
 	 	<% end %>
 
 		<% else %>
-			Fai <%= link_to "Log In", new_user_session_path %> oppure <%= link_to "Registrati", new_user_registration_path %> per poter acquistare questo contenuto
+			<p>Fai <%= link_to "Log In", new_user_session_path %> oppure <%= link_to "Registrati", new_user_registration_path %> per poter 
+				acquistare questo contenuto
+			</p>
 			
 		<% end %>
 		
 
 	</div>
 
+</div>
 </div>
 
 

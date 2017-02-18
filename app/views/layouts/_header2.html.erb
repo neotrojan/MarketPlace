@@ -7,7 +7,7 @@
             <div class="container nav-wrapper"> 
             	
             	<!-- Inserire la nostra home come logo e inserire una icona -->
-            	<%= link_to '<i class="fa fa-floppy-o"> MarketPlace</i>'.html_safe, root_path, class: "brand-logo"  %>
+            	<%= link_to '<i class="fa fa-floppy-o"> MarketPlace</i>'.html_safe, root_path, class: "brand-logo" %>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 
         
@@ -19,7 +19,21 @@
 			       <!-- Se l'utente è loggato mostra solo il tab sotto, altrimenti altri -->
 			       <% if user_signed_in? %>
 			          <!-- Tab per fare il logout usando il metodo di cancellare la sessione--> 
-			          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+
+                <!-- Menu a comparsa -->
+                <ul id="dropdown1" class="dropdown-content">
+                  
+                  <!-- Pagina di dashboard -->
+                  <li><%= link_to "Dashboard", dashboard_path %></li>
+                  <!-- Pagina per poter cambiare la password, creata in automatico da devise -->
+                  <li><%= link_to "Impostazioni", edit_user_registration_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+                </ul>
+
+			          <!-- bottone e comparsa del nome dell'utente loggato-->
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= current_user.name %><i class="material-icons right">arrow_drop_down</i></a></li>
+
 			        <% else %>
 			          <!-- Tab per fare il LogIn --> 
 			          <li><%= link_to "Log In", new_user_session_path %></li>
@@ -34,19 +48,24 @@
 
     <!-- ---------------- barra di navigazione per Mobile -->
       <ul class="side-nav" id="mobile-demo">
-        <!-- inserire un nuovo contenuto -->
-        <li><%= link_to 'Vendi contenuto', new_content_path %></li>
+         <!-- inserire un nuovo contenuto -->
+             <li><%= link_to 'Vendi contenuto', new_content_path %></li>
+             <!-- Se l'utente è loggato mostra solo il tab sotto, altrimenti altri -->
+             <% if user_signed_in? %>
+                  
+                  <!-- Pagina di dashboard -->
+                  <li><%= link_to "Dashboard", dashboard_path %></li>
+                  <!-- Pagina per poter cambiare la password, creata in automatico da devise -->
+                  <li><%= link_to "Impostazioni", edit_user_registration_path %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
 
-        <!-- Se l'utente è loggato mostra solo il tab sotto, altrimenti altri -->
-        <% if user_signed_in? %>
-          <!-- Tab per fare il logout usando il metodo di cancellare la sessione--> 
-          <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <!-- Tab per fare il Log In --> 
-          <li><%= link_to "Log In", new_user_session_path %></li>
-          <!-- Tab per fare la registrazione --> 
-          <li><%= link_to "Registrazione", new_user_registration_path %></li>
-        <% end %>
+              <% else %>
+                <!-- Tab per fare il LogIn --> 
+                <li><%= link_to "Log In", new_user_session_path %></li>
+                <!-- Tab per fare la registrazione --> 
+                <li><%= link_to "Registrazione", new_user_registration_path %></li>
+              <% end %>
 
       </ul>
 </header>

@@ -1,0 +1,113 @@
+<h1 class="center">dashboard</h1>
+
+<div class="row">
+	<div class="col s12">
+	  <ul class="tabs">
+	    <li class="tab col s6"><a href="#storico">Storico</a></li>
+	    <li class="tab col s6"><a href="#vendita">In Vendita</a></li>
+	  </ul>
+	</div>
+	
+	
+	<!-- --------------------------------- Tab per lo storico -->
+	<div id="storico" class="col s12">
+
+		<h4><b>Vendite </b></h4>
+		<!-- Tabella -->
+		<table>
+			<!-- titoli -->
+			<thead>
+				<tr>
+					<!-- Nomi di colonne-->
+					<th>Nome</th>
+					<th>Prezzo</th>
+					<th>Data</th>
+					<th>Acquirente</th>
+				</tr>
+			</thead>
+
+				<!-- Contenuto della tabella -->
+				<tbody>
+					<% @sales.each do |sale| %>
+					<tr>
+						<th><%= sale.content.titolo %></th>
+						<th><%= number_to_currency(sale.amount / 100) %></th>
+						<!-- Da quanto tempo è stato acquisto -->
+						<th><%= time_ago_in_words(sale.created_at) %> fa</th>
+						<th><%= sale.email_acquirente %></th>
+					</tr>
+					<% end %>
+				</tbody>	
+		</table>
+
+		<br><br>
+
+		<h4><b>Acquisti</b></h4>
+		<!-- Tabella -->
+		<table>
+			<!-- titoli -->
+			<thead>
+				<tr>
+					<!-- Nomi di colonne-->
+					<th>Nome</th>
+					<th>Prezzo</th>
+					<th>Data di creazione</th>
+					<th>Venditore</th>
+				</tr>
+			</thead>
+
+				<!-- Contenuto della tabella -->
+				<tbody>
+					<% @purchased.each do |purchased| %>
+					<tr>
+						<!-- comparirà il titolo del contenuto acquistato e cliccandoci ci porta al file da scaricare -->
+						<th><%= link_to purchased.content.titolo, pickup_path(purchased.guid) %></th>
+						<th><%= number_to_currency(purchased.amount / 100) %></th>
+						<th><%= time_ago_in_words(purchased.created_at) %> fa</th>
+						<th><%= purchased.email_venditore %></th>
+						
+					</tr>
+					<% end %>
+				</tbody>	
+		</table>
+
+
+	</div>
+	
+	
+
+
+	<!-- --------------------------------- Tab in Vendita -->
+	<div id="vendita" class="col s12">
+		<!-- Tabella -->
+		<table>
+			<!-- titoli -->
+			<thead>
+				<tr>
+					<!-- Nomi di colonne-->
+					<th>Nome</th>
+					<th>Prezzo</th>
+					<th>Data di creazione</th>
+					<th>Azioni</th>
+				</tr>
+			</thead>
+
+				<!-- Contenuto della tabella -->
+				<tbody>
+					<% @content.each do |content| %>
+					<tr>
+						<!-- comparirà il titolo del contenuto venduto e se cliccato porta al contentuto -->
+						<th><%= link_to content.titolo, content_path(content) %></th>
+						<th><%= number_to_currency(content.price) %></th>
+						<th><%= time_ago_in_words(content.created_at) %> fa</th>
+						<!-- Link per modificare o eliminare il contenuto -->
+						<th>
+							<%= link_to "Modifica", edit_content_path(content) %> |
+						    <%= link_to "Elimina", content, method: :delete, data: {confirm: 'Sei sicuro di eliminare questo contentuo?'} %>
+					    </th>
+					</tr>
+					<% end %>
+				</tbody>	
+		</table>
+	</div>
+ </div>

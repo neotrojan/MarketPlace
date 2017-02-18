@@ -33,13 +33,13 @@
             <!-- Tasto mostra, al centro -->
             <div class="center"><%= link_to 'Scopri di più', content, class: "btn" %></div>
              <!-- Mostra edit e destroy solo se il contenuto creato è stato creato dall'utente loggato -->
-            <% if content.user == current_user %>
+            <!-- <% if content.user == current_user %> 
               <br>
               <div class="center">
                 <p><%= link_to 'Edit', edit_content_path(content) %>
                 <%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Sei sicuro di cancellare?' } %></p>
               </div>
-            <% end %>
+            <% end %> -->
 
           </div>
           <!-- tasto che si espande, dopo riporta di nuovo il titolo e descrizione -->
